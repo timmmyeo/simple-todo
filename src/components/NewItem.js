@@ -1,6 +1,6 @@
 import React from "react"
 import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
+import {Button, Row, Col, Container} from "react-bootstrap/";
 import { v4 as uuidv4 } from 'uuid';
 
 
@@ -32,14 +32,20 @@ class NewItem extends React.Component {
 
   render() {
     return (
-      <div>
+      <Container fluid="sm">
         <Form onSubmit={this.handleSubmit}>
-          <Form.Group controlId="newItemForm">
-            <Form.Control value={this.state.text} type="text" placeholder="New Item" onChange={this.handleChange} />
-          </Form.Group>
-          <Button variant="primary" type="submit">Add</Button>
+          <Row>
+            <Col xs="11">
+              <Form.Group controlId="newItemForm">
+                <Form.Control value={this.state.text} type="text" placeholder="New Item" onChange={this.handleChange} />
+              </Form.Group>
+            </Col>
+            <Col>
+              <Button variant="primary" type="submit">Add</Button>
+            </Col>
+          </Row>
         </Form>
-      </div>
+      </Container>
     )
   }
 }
