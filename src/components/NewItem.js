@@ -1,6 +1,9 @@
 import React from "react"
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import { v4 as uuidv4 } from 'uuid';
+
+
 
 class NewItem extends React.Component {
   constructor() {
@@ -21,8 +24,8 @@ class NewItem extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.state.text == "" ? alert("Textbox is empty :/") :
-    this.props.onSubmit(this.state.text);
+    this.state.text === "" ? alert("Textbox is empty :/") :
+    this.props.onSubmit(uuidv4(), this.state.text);
     this.setState({text: ""});
   }
 

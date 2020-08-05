@@ -14,19 +14,28 @@ class App extends React.Component {
       todos: []
     }
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
-  handleSubmit(text) {
+  handleSubmit(id, text) {
     this.setState(prevState => {
       return (
-        {todos: [...prevState.todos, text]}
+        {todos: [...prevState.todos, {id: id, text: text}]}
       )
     })
 
   }
 
+  handleDelete(id) {
+    this.setState(prevState => {
+      return (
+        {todos: prevState.todos.filter(todo => todo.id !== id)}
+      )
+    });
+  }
+
   render() {
-    const todoItems = this.state.todos.map((todo) => <TodoItem text={todo} />)
+    const todoItems = this.state.todos.map((todo) => <TodoItem key={todo.id} handleDelete={this.handleDelete} id={todo.id} text={todo.text} />)
     return(
       <div>
         <Header />
