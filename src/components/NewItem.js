@@ -32,7 +32,7 @@ class NewItem extends React.Component {
 
   render() {
     return (
-      <Container fluid="sm">
+      <Container fluid="lg">
         <Form onSubmit={this.handleSubmit}>
           <Row>
             <Col xs="11">
